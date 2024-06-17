@@ -19,13 +19,15 @@ window.onload = () => {
     async function render() {
         const comicID = await fetchID();
         const comic = await getComic(comicID);
+        
         const title = document.getElementById("comic-title");
         const image = document.getElementById("comic-image");
         const alt = document.getElementById("comic-alt");
         const date = document.getElementById("comic-date");
-        title.textContent = comic.title;
+        
+        title.textContent = comic.safe_title;
         image.src = comic.img;
-        image.alt = comic.alt;
+        image.alt = comic.transcript;
         alt.textContent = comic.alt;
         const comicDate = new Date(comic.year, comic.month, comic.day);
         date.textContent = `Comic date: ${comicDate.toLocaleDateString()}`;
