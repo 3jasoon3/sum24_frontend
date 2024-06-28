@@ -23,10 +23,3 @@ jobs:
 
     - name: Build project
       run: npm run build 
-
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
-        publish_dir: ./dist 
