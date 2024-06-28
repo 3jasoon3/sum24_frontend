@@ -1,11 +1,7 @@
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
-import {
-  differenceInYears,
-  differenceInMonths,
-  differenceInDays,
-} from "date-fns";
+import copy from "rollup-plugin-copy";
 
 export default {
   input: {
@@ -22,8 +18,8 @@ export default {
     nodeResolve({ browser: true }),
     typescript(),
     terser(),
-    differenceInYears(),
-    differenceInMonths(),
-    differenceInDays(),
+    copy({
+      targets: [{ src: "public/*", dest: "dist" }],
+    }),
   ],
 };
